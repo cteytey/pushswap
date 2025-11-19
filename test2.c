@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:01:51 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/19 14:52:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/19 15:26:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,18 @@ int		pop(stack *s) // supprimer le dernier element ajouté a la stack
 	return(1);
 }
 
+int		peek(stack *s) // montrer la derniere valeur ajoutée a la stack
+{
+	if (is_empty(s))
+		return (0);
+	int item = s->values[s->size - 1];
+	return (item);
+}
+
 int	main()
 {
-	stack *s = create_stack(5); 	// creation d'une stack avec un maximum de 5 valeurs, malloc
+	int	capacity = 5;
+	stack *s = create_stack(capacity); 	// creation d'une stack avec un maximum de 5 valeurs, malloc
 	if (!s)
 	{
 		printf("error\n");
@@ -87,13 +96,32 @@ int	main()
 	}
 	if(s)
 		printf("stack has been created\n");
-	push(s, 2); 					// ajout d'une valeur "2" en haut de ma stack
-	printf("%d\n", s->size); 		// verification de la taille + 1 du push
-	pop(s);							// retrait de la valeur ajoutée par push
-	printf("%d\n", s->size);		// verification de la taille - 1 du pop
+
 	if (is_empty(s))
 		printf("stack is empty\n");
+
+	push(s, 2); 					// ajout d'une valeur "2" en haut de ma stack
+	printf("%d\n", s->size); 		// verification de la taille + 1 du push
+
+	push(s, 4);
+	push(s, 6);
+	push(s, 8);
+	push(s, 10);
+	printf("%d\n", s->size);
+
+	printf("last value of the stack is %d\n", peek(s));
+	
 	if (is_full(s))
 		printf ("stack is full\n");
+
+	int	i = capacity;
+	while (i > 0)					// boucle d'affichage de chaque element d'une stack en les retirant un par un
+	{
+		printf("%d\n", peek(s));
+		pop(s);
+		i--;
+	}
+	if (is_empty(s))
+		printf("stack is empty");
 	delete_stack(s);				// suppression de la stack, free
 }
