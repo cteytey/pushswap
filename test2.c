@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:01:51 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/19 13:49:18 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/19 14:52:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		pop(stack *s) // supprimer le dernier element ajouté a la stack
 
 int	main()
 {
-	stack *s = create_stack(5);
+	stack *s = create_stack(5); 	// creation d'une stack avec un maximum de 5 valeurs, malloc
 	if (!s)
 	{
 		printf("error\n");
@@ -87,13 +87,13 @@ int	main()
 	}
 	if(s)
 		printf("stack has been created\n");
-	push(s, 2);
-	printf("%d\n", s->size);
-	pop(s);
-	printf("%d\n", s->size);
+	push(s, 2); 					// ajout d'une valeur "2" en haut de ma stack
+	printf("%d\n", s->size); 		// verification de la taille + 1 du push
+	pop(s);							// retrait de la valeur ajoutée par push
+	printf("%d\n", s->size);		// verification de la taille - 1 du pop
 	if (is_empty(s))
 		printf("stack is empty\n");
 	if (is_full(s))
 		printf ("stack is full\n");
-	delete_stack(s);
+	delete_stack(s);				// suppression de la stack, free
 }
