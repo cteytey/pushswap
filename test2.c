@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:01:51 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/19 15:26:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/20 16:20:42 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,13 @@ int		push(stack *s, int item) // ajouter un element a la stack
 
 int		pop(stack *s) // supprimer le dernier element ajouté a la stack
 {
+	int	popped;
+	
 	if (is_empty(s))
 		return (0);
-	s->values[s->size] = 0;
+	popped = s->values[s->size - 1];
 	s->size--;
-	return(1);
+	return (popped);
 }
 
 int		peek(stack *s) // montrer la derniere valeur ajoutée a la stack
@@ -85,43 +87,120 @@ int		peek(stack *s) // montrer la derniere valeur ajoutée a la stack
 	return (item);
 }
 
+void	s(stack *a)
+{
+	int	tmp1;
+	int	tmp2;
+
+	if (a->size <= 1)
+		return ;
+	tmp1 = pop(a);
+	tmp2 = pop(a);
+	push(a, tmp1);
+	push(a, tmp2);
+}
+
+void	ss(stack *a, stack *b)
+{
+	s(a);
+	s(b);
+}
+
+void	pa(stack *a, stack *b)
+{
+	if (b->size > 0)
+		push(a, pop(b));
+}
+
+void	pb(stack *b, stack *a)
+{
+	if (a->size > 0)
+		push(b, pop(a));
+}
+
+#include <string.h>
+
+void	rs(stack *s)
+{
+	// int	top = peek(a);
+
+	// memmove(&a->values[1], &a->values[0], (a->size - 1) * sizeof(int));
+	// a->values[0] = top;
+	int i = 0;
+	int	tmp;
+	while (i < s->size - 1)
+	{
+		tmp = s->values[i];
+		s->values[i] = s->values[i + 1];
+		s->values[i + 1] = tmp;
+		i++;
+	}
+}
+
+void	rr(stack *a, stack *b)
+{
+	rs(a);
+	rs(b);
+}
+
+void	rrs(stack *s)
+{
+	// int	bot = a->values[0];
+
+	// memmove(&a->values[0], &a->values[1], (a->size - 1) * sizeof(int));
+	// a->values[a->size - 1] = bot;
+	int i = s->size - 1;
+	int	tmp;
+	while (i > 0)
+	{
+		tmp = s->values[i];
+		s->values[i] = s->values[i - 1];
+		s->values[i - 1] = tmp;
+		i--;
+	}
+}
+
+void	rrr(stack *a, stack *b)
+{
+	rrs(a);
+	rrs(b);
+}
+
 int	main()
 {
 	int	capacity = 5;
-	stack *s = create_stack(capacity); 	// creation d'une stack avec un maximum de 5 valeurs, malloc
-	if (!s)
+	stack *a = create_stack(capacity); 	// creation d'une stack avec un maximum de 5 valeurs, malloc
+	stack *b = create_stack(capacity); 	// creation d'une stack avec un maximum de 5 valeurs, malloc
+	if (!a)
 	{
 		printf("error\n");
 		return (1);
 	}
-	if(s)
+	if(a)
 		printf("stack has been created\n");
 
-	if (is_empty(s))
+	if (is_empty(a))
 		printf("stack is empty\n");
 
-	push(s, 2); 					// ajout d'une valeur "2" en haut de ma stack
-	printf("%d\n", s->size); 		// verification de la taille + 1 du push
+	push(a, 0); 					// ajout d'une valeur "2" en haut de ma stack
+	push(a, 1);
+	push(a, 2);
+	push(a, 3);
+	push(a, 4);
 
-	push(s, 4);
-	push(s, 6);
-	push(s, 8);
-	push(s, 10);
-	printf("%d\n", s->size);
+	push(b, 5); 					// ajout d'une valeur "2" en haut de ma stack
+	push(b, 6);
+	push(b, 7);
+	push(b, 8);
+	push(b, 9);
 
-	printf("last value of the stack is %d\n", peek(s));
-	
-	if (is_full(s))
-		printf ("stack is full\n");
-
+	rrs(a);
 	int	i = capacity;
 	while (i > 0)					// boucle d'affichage de chaque element d'une stack en les retirant un par un
 	{
-		printf("%d\n", peek(s));
-		pop(s);
+		printf("%d %d \n", pop(a), pop(b));
 		i--;
 	}
-	if (is_empty(s))
-		printf("stack is empty");
-	delete_stack(s);				// suppression de la stack, free
+	delete_stack(a);				// suppression de la stack, free
+	delete_stack(b);
 }
