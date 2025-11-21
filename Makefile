@@ -4,7 +4,7 @@ NAME = push_swap.a
 
 ARCS = -ar rcs
 
-SOURCE = sorting_utils.c \
+SOURCE = sort_utils.c \
 	stack_utils.c
 
 HEADER = -Ipush_swap.h  -I../libft/libft.h

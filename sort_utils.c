@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:01:51 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/21 14:45:45 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/21 14:51:16 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,6 @@ void	rrs(stack *s)
 
 	ft_memmove(&s->values[0], &s->values[1], (s->size - 1) * sizeof(int));
 	s->values[s->size - 1] = bot;
-	// int i = s->size - 1;
-	// int	tmp;
-	// while (i > 0)
-	// {
-	// 	tmp = s->values[i];
-	// 	s->values[i] = s->values[i - 1];
-	// 	s->values[i - 1] = tmp;
-	// 	i--;
-	// }
 }
 
 void	rrr(stack *a, stack *b)
