@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 12:54:12 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/25 16:12:21 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/25 19:10:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@
 typedef struct
 {
 	int		*values;
-	int		size; // nombre d'elements dans le tableau
+	int		size;      // nombre d'elements dans le tableau
 }			stack;
+
+typedef	struct	s_chunk
+{
+	int	start;
+	int	end;           // chunks pour couper mon tableau en plus petit tableau
+}	t_chunk;
 
 // ------------------------- LIBFT -------------------------
 
