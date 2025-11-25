@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:39:13 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/25 16:13:09 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/25 16:26:29 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,3 @@ int	*ft_indexizer(int *tab, int size)
 	free (tmp);
 	return (res);
 }
-
-/*
-etape 2 -> creation de chunks de taille n/k (n = valeurs et k = morceaux)
-
-etape 3 -> chunk stack a -> stack b: 
-si n <= chunk/2, pb rb et si n>=chunk/2, pb
-tri grossier mais debut de tri
-
-etape 4 -> chunk++ en gros
-
-etape 5 -> trouver le plus grand element de b, savoir si ra ou rra pour l'amener en haut
-une fois qu'il est en haut pa pour le remettre dans a et ainsi de suite.
-*/
