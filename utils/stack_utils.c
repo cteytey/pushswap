@@ -6,11 +6,11 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 10:14:48 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/21 13:54:50 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/25 11:19:28 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 stack	*create_stack(int capacity)
 {

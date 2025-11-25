@@ -6,11 +6,11 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:01:51 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/21 14:51:16 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/25 11:19:23 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	s(stack *a)
 {
@@ -45,19 +45,10 @@ void	pb(stack *b, stack *a)
 
 void	rs(stack *s)
 {
-	// int	top = peek(a);
+	int	top = s->values[s->size - 1];
 
-	// ft_memmove(&a->values[1], &a->values[0], (a->size - 1) * sizeof(int));
-	// a->values[0] = top;
-	int i = 0;
-	int	tmp;
-	while (i < s->size - 1)
-	{
-		tmp = s->values[i];
-		s->values[i] = s->values[i + 1];
-		s->values[i + 1] = tmp;
-		i++;
-	}
+	ft_memmove(&s->values[1], &s->values[0], (s->size - 1) * sizeof(int));
+	s->values[0] = top;
 }
 
 void	rr(stack *a, stack *b)

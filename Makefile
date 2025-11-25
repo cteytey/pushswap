@@ -4,31 +4,36 @@ NAME = push_swap.a
 
 ARCS = -ar rcs
 
-SOURCE = sort_utils.c \
-	stack_utils.c
+SOURCE = libft/ft_atoi.c \
+	libft/ft_memmove.c \
+	libft/ft_split.c \
+	libft/ft_strjoin.c \
+	libft/ft_strlen.c \
+	parsing/ft_parsing.c \
+	parsing/is_same_number.c \
+	parsing/is_valid_number.c \
+	utils/sort_utils.c \
+	utils/stack_utils.c
 
-HEADER = -Ipush_swap.h  -I../libft/libft.h
+HEADER = -Ipush_swap.h
 
 OBJ = $(SOURCE:.c=.o)
 
 all : $(NAME) main
 
 $(NAME) : $(OBJ)
-	make -C ../libft
 	$(ARCS) $(NAME) $(OBJ)
 
 clean :
 	rm -rf $(OBJ)
-	make -C ../libft clean
 
 fclean : clean
 	rm -rf $(NAME)
-	make -C ../libft fclean
 	rm a.out
 
 re : fclean all
 
 main: $(NAME)
-	$(CC) $(CFLAGS) -o a.out main.c $(NAME) ../libft/libft.a
+	$(CC) $(CFLAGS) -o a.out main.c $(NAME)
 
 .PHONY: all clean fclean re main

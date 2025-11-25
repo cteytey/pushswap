@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 14:24:59 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/21 14:46:58 by judehon          ###   ########.fr       */
+/*   Created: 2025/11/25 09:57:59 by judehon           #+#    #+#             */
+/*   Updated: 2025/11/25 11:19:31 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main()
 	push(b, 8);
 	push(b, 9);
 
-	rrs(a);
+	rs(a);
 	int	i = capacity;
 	while (i > 0)					// boucle d'affichage de chaque element d'une stack en les retirant un par un
 	{
