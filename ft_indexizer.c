@@ -6,9 +6,11 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:39:13 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/25 16:26:29 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/26 11:59:46 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 static int	*ft_copy_int_tab(int *tab, int size)
 {

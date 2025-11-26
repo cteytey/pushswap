@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 12:54:12 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/25 19:10:49 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/26 15:56:59 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct
 	int		size;      // nombre d'elements dans le tableau
 }			stack;
 
-typedef	struct	s_chunk
+typedef	struct
 {
 	int	start;
 	int	end;           // chunks pour couper mon tableau en plus petit tableau
@@ -65,6 +65,9 @@ int		is_same_number(char **split);
 // ----------------------- ALGORITHM -----------------------
 
 int	*ft_indexizer(int *tab, int size);
+int find_chunks_amount(int size);
+t_chunk *ft_create_chunks(int size);
+
 
 
 #endif

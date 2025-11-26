@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_chunks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:24:42 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/25 19:16:49 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/26 16:04:11 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_chunks_size(int size)
+int find_chunks_amount(int size)
 {
     int i;
 
@@ -28,14 +28,14 @@ int find_chunks_size(int size)
     return (1);
 }
 
-t_chunk *ft_create_chunks(int size)
+t_chunk *ft_create_chunks(int size, int *nb_chunks_out)
 {
     int     nb_chunks;
     int     chunk_size;
     t_chunk *chunks;
     int     i;
 
-    nb_chunks = find_chunks_size(size);
+    nb_chunks = find_chunks_amount(size);
     chunk_size = size / nb_chunks;
     i = 0;
     chunks = malloc(sizeof(t_chunk) * nb_chunks);
@@ -47,5 +47,6 @@ t_chunk *ft_create_chunks(int size)
         chunks[i].end = (i + 1) * chunk_size - 1;
         i++;
     }
+    *nb_chunks_out = nb_chunks;
     return (chunks);
 }
