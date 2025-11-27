@@ -13,7 +13,10 @@ SOURCE = libft/ft_atoi.c \
 	parsing/is_same_number.c \
 	parsing/is_valid_number.c \
 	utils/sort_utils.c \
-	utils/stack_utils.c
+	utils/stack_utils.c \
+	ft_indexizer.c \
+	ft_create_chunks.c \
+	algo.c
 
 HEADER = -Ipush_swap.h
 

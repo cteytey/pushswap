@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 12:54:12 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/26 15:56:59 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/27 14:17:07 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ void	s(stack *a);
 void	ss(stack *a, stack *b);
 void	pa(stack *a, stack *b);
 void	pb(stack *b, stack *a);
-void	rs(stack *s);
+void	ra(stack *a);
+void	rb(stack *b);
 void	rr(stack *a, stack *b);
-void	rrs(stack *s);
+void	rra(stack *a);
+void	rrb(stack *b);
 void	rrr(stack *a, stack *b);
 
 // ------------------------ PARSING ------------------------
@@ -66,8 +68,7 @@ int		is_same_number(char **split);
 
 int	*ft_indexizer(int *tab, int size);
 int find_chunks_amount(int size);
-t_chunk *ft_create_chunks(int size);
-
-
+t_chunk *ft_create_chunks(int size, int *nb_chunks_out);
+stack	*ft_push_swap(stack *a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 10:14:48 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/25 11:19:28 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/27 13:35:25 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ stack	*create_stack(int capacity)
 	s = malloc(sizeof(stack));
 	if (!s)
 		return (NULL);
-	s->values = malloc (sizeof(int) * capacity);
+	s->values = malloc(sizeof(int) * capacity);
 	if (!s->values)
 	{
 		free (s);
