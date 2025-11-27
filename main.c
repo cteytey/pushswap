@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 09:57:59 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/27 14:09:56 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/27 15:59:51 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ int	main(int ac, char **av)
         push(a, ft_atoi(args[i]));
 		i++;
 	}
-    stack *b = ft_push_swap(a);
-	i--;
-    while (i >= 0)
+    ft_push_swap(a);
+    while (i > 0)
 	{
-        printf("%d\n", pop(b));
+        printf("%d\n", pop(a));
 		i--;
 	}
 	return (0);

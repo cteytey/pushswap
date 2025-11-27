@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:26:14 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/27 14:17:20 by judehon          ###   ########.fr       */
+/*   Updated: 2025/11/27 16:02:04 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,32 @@ stack	*ft_push_swap(stack *a)
         {
             int idx = find_chunk_index(a->values, a->size, start, end);
 
-            if (idx == a->size - 1) // <-- TOP (values[size-1])
+            if (idx == a->size - 1)
             {
-                pb(b, a);          // <-- TA version : push(b, pop(a))
+                pb(b, a);
                 if (b->size > 1 && b->values[b->size - 1] < (start + end) / 2)
                     rb(b);
             }
             else
             {
-                int to_top = (a->size - 1) - idx;  // distance depuis le top
-                int to_bot = idx;               // distance depuis le bas
+                int to_top = (a->size - 1) - idx;
+                int to_bot = idx;
 
                 if (to_top <= to_bot)
-                    ra(a);   // rapprocher idx du top
+                    ra(a);
                 else
-                    rra(a);  // rapprocher idx du top
+                    rra(a);
             }
         }
         c++;
     }
-    return b;
+	int final_size = b->size;
+	while (final_size >= 0)
+	{
+		pa(a, b);
+		final_size--;
+	}
+    return (a);
 }
 /*
 
