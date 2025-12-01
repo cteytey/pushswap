@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 09:36:29 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/26 13:31:02 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/01 13:12:43 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	**ft_parsing(int ac, char **av)
 	if (!is_valid_number(split) || !is_same_number(split))
 	{
 		ft_free_all(split);
+		printf("error\n");
 		return (NULL);
 	}
 	return (split);

@@ -1,6 +1,6 @@
 CC = cc -Wall -Wextra -Werror
 
-NAME = push_swap.a
+NAME = push_swap2
 
 ARCS = -ar rcs
 
@@ -32,11 +32,10 @@ clean :
 
 fclean : clean
 	rm -rf $(NAME)
-	rm a.out
 
 re : fclean all
 
 main: $(NAME)
-	$(CC) $(CFLAGS) -o a.out main.c $(NAME)
+	$(CC) $(CFLAGS) -o push_swap main.c $(NAME)
 
 .PHONY: all clean fclean re main

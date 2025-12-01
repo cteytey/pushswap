@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:26:14 by judehon           #+#    #+#             */
-/*   Updated: 2025/12/01 12:58:51 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/01 15:26:20 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	find_chunk_index(int *tab,int size, int start, int end)
 	return (0);
 }
 
-void	sort_by_chunk(stack *a, stack *b, int start, int end)
+void	sort_chunk(stack *a, stack *b, int start, int end)
 {
     while (in_chunk_range(a->values, a->size, start, end))
     {
@@ -71,7 +71,7 @@ stack	*ft_push_swap(stack *a)
 
     while (c < nb_chunks)
     {
-		sort_by_chunk(a, b, chunks[c].start, chunks[c].end);
+		sort_chunk(a, b, chunks[c].start, chunks[c].end);
         c++;
     }
 	while (!is_empty(b))
