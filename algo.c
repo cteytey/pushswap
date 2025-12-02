@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:26:14 by judehon           #+#    #+#             */
-/*   Updated: 2025/12/01 15:26:20 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/02 16:12:09 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,43 @@ void	sort_chunk(stack *a, stack *b, int start, int end)
 	}
 }
 
+int		find_max_index(stack *s)
+{
+	int max = 0;
+	int	i = 1;
+	while (i < s->size)
+	{
+		if (s->values[i] > s->values[max])
+			max = i;
+		i++;
+	}
+	return (max);
+}
+void	b_to_a(stack *a, stack *b, int max)
+{
+	while (max != b->size - 1)
+	{
+		int to_top = (b->size - 1) - max;
+		int to_bot = max;
+
+		if (to_top <= to_bot)
+			rb(b);
+		else
+			rrb(b);
+		max = find_max_index(b);
+	}
+	pa(a, b);
+}
+
+void	b_to_a_chunks(stack *a, stack *b, int start, int end)
+{
+	while (in_chunk_range(b->values, b->size, start, end))
+	{
+		int max = find_max_index(b);
+		b_to_a(a, b, max);
+	}
+}
+
 stack	*ft_push_swap(stack *a)
 {
     int nb_chunks;
@@ -74,7 +111,11 @@ stack	*ft_push_swap(stack *a)
 		sort_chunk(a, b, chunks[c].start, chunks[c].end);
         c++;
     }
-	while (!is_empty(b))
-		pa(a, b);
+	int	i = nb_chunks - 1;
+	while (i >= 0)
+	{
+		b_to_a_chunks(a, b, chunks[i].start, chunks[i].end);
+		i--;
+	}
     return (a);
 }
