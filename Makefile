@@ -1,41 +1,37 @@
 CC = cc -Wall -Wextra -Werror
 
-NAME = push_swap2
-
-ARCS = -ar rcs
+NAME = push_swap
 
 SOURCE = libft/ft_atoi.c \
-	libft/ft_memmove.c \
-	libft/ft_split.c \
-	libft/ft_strjoin.c \
-	libft/ft_strlen.c \
-	parsing/ft_parsing.c \
-	parsing/is_same_number.c \
-	parsing/is_valid_number.c \
-	utils/sort_utils.c \
-	utils/stack_utils.c \
-	ft_indexizer.c \
-	ft_create_chunks.c \
-	algo.c
+          libft/ft_memmove.c \
+          libft/ft_split.c \
+          libft/ft_strjoin.c \
+          libft/ft_strlen.c \
+          parsing/ft_parsing.c \
+          parsing/is_same_number.c \
+          parsing/is_valid_number.c \
+          utils/sort_utils.c \
+          utils/stack_utils.c \
+          ft_indexizer.c \
+          ft_create_chunks.c \
+          algo.c \
+          main.c
 
 HEADER = -Ipush_swap.h
 
 OBJ = $(SOURCE:.c=.o)
 
-all : $(NAME) main
+all: $(NAME)
 
-$(NAME) : $(OBJ)
-	$(ARCS) $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
 
-clean :
-	rm -rf $(OBJ)
+clean:
+	rm -f $(OBJ)
 
-fclean : clean
-	rm -rf $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-main: $(NAME)
-	$(CC) $(CFLAGS) -o push_swap main.c $(NAME)
-
-.PHONY: all clean fclean re main
+.PHONY: all clean fclean re

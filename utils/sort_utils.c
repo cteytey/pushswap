@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:01:51 by judehon           #+#    #+#             */
-/*   Updated: 2025/12/02 16:32:56 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/05 16:15:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 void	s(stack *a)
 {
-	int	tmp1;
-	int	tmp2;
+    int tmp;
 
-	if (a->size <= 1)
-		return ;
-	tmp1 = pop(a);
-	tmp2 = pop(a);
-	push(a, tmp1);
-	push(a, tmp2);
+    if (a->size < 2)
+        return ;
+    tmp = a->values[0];
+    a->values[0] = a->values[1];
+    a->values[1] = tmp;
 }
 
 void	ss(stack *a, stack *b)
@@ -47,18 +45,20 @@ void	pb(stack *b, stack *a)
 
 void	ra(stack *a)
 {
-	int	top = a->values[a->size - 1];
-
-	ft_memmove(&a->values[1], &a->values[0], (a->size - 1) * sizeof(int));
-	a->values[0] = top;
+	if (a->size < 2)
+		return;
+	int	top = a->values[0];
+	ft_memmove(&a->values[0], &a->values[1], (a->size - 1) * sizeof(int));
+	a->values[a->size - 1] = top;
 	printf("ra\n");
 }
 void	rb(stack *b)
 {
-	int	top = b->values[b->size - 1];
-
-	ft_memmove(&b->values[1], &b->values[0], (b->size - 1) * sizeof(int));
-	b->values[0] = top;
+	if (b->size < 2)
+		return;
+	int	top = b->values[0];
+	ft_memmove(&b->values[0], &b->values[1], (b->size - 1) * sizeof(int));
+	b->values[b->size - 1] = top;
 	printf("rb\n");
 }
 
@@ -70,18 +70,20 @@ void	rr(stack *a, stack *b)
 
 void	rra(stack *a)
 {
-	int	bot = a->values[0];
-
-	ft_memmove(&a->values[0], &a->values[1], (a->size - 1) * sizeof(int));
-	a->values[a->size - 1] = bot;
+	if (a->size < 2)
+		return;
+	int	bot = a->values[a->size - 1];
+	ft_memmove(&a->values[1], &a->values[0], (a->size - 1) * sizeof(int));
+	a->values[0] = bot;
 	printf("rra\n");
 }
 void	rrb(stack *b)
 {
-	int	bot = b->values[0];
-
-	ft_memmove(&b->values[0], &b->values[1], (b->size - 1) * sizeof(int));
-	b->values[b->size - 1] = bot;
+	if (b->size < 2)
+		return;
+	int	bot = b->values[b->size - 1];
+	ft_memmove(&b->values[1], &b->values[0], (b->size - 1) * sizeof(int));
+	b->values[0] = bot;
 	printf("rrb\n");
 }
 void	rrr(stack *a, stack *b)
