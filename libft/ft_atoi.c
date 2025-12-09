@@ -6,15 +6,15 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 10:24:28 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/25 11:16:48 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/08 10:56:01 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	res;
-	int	sign;
+	long	i;
+	long	res;
+	long	sign;
 
 	i = 0;
 	res = 0;

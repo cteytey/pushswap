@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 12:54:12 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/27 14:17:07 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/09 14:03:07 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define PUSH_SWAP_H
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 // ----------------------- STRUCTURE -----------------------
-typedef struct
+typedef struct s_stack
 {
 	int		*values;
 	int		size;      // nombre d'elements dans le tableau
@@ -34,7 +35,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	ft_strlen(char const *str);
-int		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 void	ft_free_all(char **s);
 
 // ---------------------- STACK_UTILS ----------------------
@@ -47,7 +48,8 @@ int		pop(stack *s);
 
 // --------------------- SORTING_UTILS ---------------------
 
-void	s(stack *a);
+void	sa(stack *a);
+void	sb(stack *a);
 void	ss(stack *a, stack *b);
 void	pa(stack *a, stack *b);
 void	pb(stack *b, stack *a);
@@ -69,6 +71,7 @@ int		is_same_number(char **split);
 int	*ft_indexizer(int *tab, int size);
 int find_chunks_amount(int size);
 t_chunk *ft_create_chunks(int size, int *nb_chunks_out);
-stack	*ft_push_swap(stack *a);
+stack	*large_sort(stack *a);
+void	sort_3(stack *a);
 
 #endif

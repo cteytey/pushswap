@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 10:14:48 by judehon           #+#    #+#             */
-/*   Updated: 2025/12/05 16:24:23 by marvin           ###   ########.fr       */
+/*   Updated: 2025/12/08 10:18:11 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int		is_empty(stack *s)
 
 int		push(stack *s, int item) // ajouter un element a la stack
 {
-	int i = s->size;
-	while (i > 0)
+	int i = s->size - 1;
+	while (i >= 0)
 	{
-		s->values[i] = s->values[i - 1];
+		s->values[i + 1] = s->values[i];
 		i--;
 	}
 	s->values[0] = item;

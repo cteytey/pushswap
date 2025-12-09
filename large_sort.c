@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   large_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:26:14 by judehon           #+#    #+#             */
-/*   Updated: 2025/12/02 16:12:09 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/09 14:02:39 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,36 +26,43 @@ int	in_chunk_range(int *tab,int size, int start, int end)
 
 int	find_chunk_index(int *tab,int size, int start, int end)
 {
-	int	i = size - 1;
-	while (i >= 0)
+	int	i = 0;
+	while (i < size)
 	{
 		if (tab[i] >= start && tab[i] <= end)
 			return (i);
-		i--;
+		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 void	sort_chunk(stack *a, stack *b, int start, int end)
 {
+	int mid	= (start + end) / 2;
     while (in_chunk_range(a->values, a->size, start, end))
     {
     	int idx = find_chunk_index(a->values, a->size, start, end);
 
-    	if (idx == a->size - 1)
+    	if (idx == 0)
         {
-        pb(b, a);
-        if (b->size > 1 && b->values[b->size - 1] < (start + end) / 2)
-        	rb(b);
+        	pb(b, a);
+        	if (b->size > 1 && b->values[0] < mid)
+        		rb(b);
         }
         else
         {
-        	int to_top = (a->size - 1) - idx;
-        	int to_bot = idx;
+        	int to_top = idx;
+        	int to_bot = a->size - idx;
         	if (to_top <= to_bot)
-            	ra(a);
+			{
+				while(to_top-- > 0)
+            		ra(a);
+			}
         	else
-            	rra(a);
+			{
+				while(to_bot-- > 0)
+            		rra(a);
+			}
         }
 	}
 }
@@ -72,32 +79,30 @@ int		find_max_index(stack *s)
 	}
 	return (max);
 }
-void	b_to_a(stack *a, stack *b, int max)
-{
-	while (max != b->size - 1)
-	{
-		int to_top = (b->size - 1) - max;
-		int to_bot = max;
-
-		if (to_top <= to_bot)
-			rb(b);
-		else
-			rrb(b);
-		max = find_max_index(b);
-	}
-	pa(a, b);
-}
 
 void	b_to_a_chunks(stack *a, stack *b, int start, int end)
 {
 	while (in_chunk_range(b->values, b->size, start, end))
 	{
 		int max = find_max_index(b);
-		b_to_a(a, b, max);
+		int to_top = max;
+    	int to_bot = b->size - max;
+    	if (to_top <= to_bot)
+		{
+        	while (find_max_index(b) != 0)
+            	rb(b);
+		}
+    	else
+		{
+        	while (find_max_index(b) != 0)
+            	rrb(b);
+		}
+		pa(a, b);
+		ra(a);
 	}
 }
 
-stack	*ft_push_swap(stack *a)
+stack	*large_sort(stack *a)
 {
     int nb_chunks;
     int c = 0;
@@ -117,5 +122,5 @@ stack	*ft_push_swap(stack *a)
 		b_to_a_chunks(a, b, chunks[i].start, chunks[i].end);
 		i--;
 	}
-    return (a);
+	return (a);
 }
