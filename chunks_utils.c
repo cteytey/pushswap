@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_chunks.c                                 :+:      :+:    :+:   */
+/*   chunks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:24:42 by judehon           #+#    #+#             */
-/*   Updated: 2025/11/27 10:35:14 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/12 16:24:01 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 int find_chunks_amount(int size)
 {
-    int i;
+    int nb;
 
-    i = 20;
-    if (i > size)
-        i = size;
-    while (i >= 2)
-    {
-        if (size % i == 0)
-            return (i);
-        i--;
-    }
-    return (1);
+    if (size <= 1)
+        return (1);
+    nb = ft_sqrt(size);
+    if (nb < 1)
+        nb = 1;
+    if (nb > 20)
+        nb = 20;
+    return (nb);
 }
 
 t_chunk *ft_create_chunks(int size, int *nb_chunks_out)
@@ -37,14 +35,17 @@ t_chunk *ft_create_chunks(int size, int *nb_chunks_out)
 
     nb_chunks = find_chunks_amount(size);
     chunk_size = size / nb_chunks;
-    i = 0;
     chunks = malloc(sizeof(t_chunk) * nb_chunks);
     if (!chunks)
         return (NULL);
+    i = 0;
     while (i < nb_chunks)
     {
         chunks[i].start = i * chunk_size;
-        chunks[i].end = (i + 1) * chunk_size - 1;
+        if (i == nb_chunks - 1)
+            chunks[i].end = size - 1;
+        else
+            chunks[i].end = (i + 1) * chunk_size - 1;
         i++;
     }
     *nb_chunks_out = nb_chunks;

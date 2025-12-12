@@ -13,9 +13,9 @@ SOURCE = libft/ft_atoi.c \
           utils/sort_utils.c \
           utils/stack_utils.c \
           ft_indexizer.c \
-          ft_create_chunks.c \
-          large_sort.c \
+          chunks_utils.c \
           small_sort.c \
+          complex_sort.c \
           main.c
 
 HEADER = -Ipush_swap.h

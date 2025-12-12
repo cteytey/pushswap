@@ -6,7 +6,7 @@
 /*   By: judehon <judehon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 12:54:12 by judehon           #+#    #+#             */
-/*   Updated: 2025/12/09 14:03:07 by judehon          ###   ########.fr       */
+/*   Updated: 2025/12/12 15:58:00 by judehon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	ft_strlen(char const *str);
 long	ft_atoi(const char *nptr);
 void	ft_free_all(char **s);
+int		ft_sqrt(int nb);
 
 // ---------------------- STACK_UTILS ----------------------
 
@@ -71,7 +72,6 @@ int		is_same_number(char **split);
 int	*ft_indexizer(int *tab, int size);
 int find_chunks_amount(int size);
 t_chunk *ft_create_chunks(int size, int *nb_chunks_out);
-stack	*large_sort(stack *a);
 void	sort_3(stack *a);
 
 #endif
